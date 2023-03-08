@@ -97,8 +97,6 @@ int main() {
     total_eng += angle.eng;
     cout << "Total Energy = " << total_eng << " kcal/mol." <<endl;
     
-
-    
     return 0;
 
 }
