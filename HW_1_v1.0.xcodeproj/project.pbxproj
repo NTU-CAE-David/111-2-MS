@@ -25,6 +25,10 @@
 /* Begin PBXFileReference section */
 		EDD3A96E29B8B87400F6126B /* HW_1_v1.0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HW_1_v1.0; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD3A97129B8B87400F6126B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EDD3A97929B8B8C900F6126B /* ATOM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATOM.h; sourceTree = "<group>"; };
+		EDD3A97A29B8B92B00F6126B /* NONBOND.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NONBOND.h; sourceTree = "<group>"; };
+		EDD3A97B29B8B95300F6126B /* BOND.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOND.h; sourceTree = "<group>"; };
+		EDD3A97C29B8B9C600F6126B /* ANGLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANGLE.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				EDD3A97129B8B87400F6126B /* main.cpp */,
+				EDD3A97929B8B8C900F6126B /* ATOM.h */,
+				EDD3A97A29B8B92B00F6126B /* NONBOND.h */,
+				EDD3A97B29B8B95300F6126B /* BOND.h */,
+				EDD3A97C29B8B9C600F6126B /* ANGLE.h */,
 			);
 			path = HW_1_v1.0;
 			sourceTree = "<group>";
