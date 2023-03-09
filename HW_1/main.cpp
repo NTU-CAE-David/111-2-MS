@@ -154,6 +154,9 @@ int main() {
     
     // Nonbond
     NONBOND nbs[3]; // 創建一個大小為 3 的 NONBOND 物件陣列
+    
+    // TODO 用上課所教的 水分子沒有 Nonbond
+    
     nbs[0].cal_eng(a[0], a[1]); // 計算第一對原子之間的非鍵能
     nbs[1].cal_eng(a[0], a[2]); // 計算第二對原子之間的非鍵能
     nbs[2].cal_eng(a[1], a[2]); // 計算第三對原子之間的非鍵能
