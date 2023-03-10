@@ -52,11 +52,47 @@ class BOND{
 class ANGLE {
     public:
         ANGLE(){
-            k0=theta0=eng=0;
+            k0=theta0=eng=theta=0;
         }
         double k0;      // Force constant in kcal/mol
         double theta0;  // Equilibrium angle in degrees
         double eng;     // angle energy in kcal/mol
+        double theta;   // Initi angle in degrees
+        
+        double angle(const ATOM& a1, const ATOM& a2, const ATOM& a3) {
+            // Calculate two vectors
+            double v1[3], v2[3];
+            for (int i = 0; i < 3; ++i) {
+                v2[i] = a1.x[i] - a2.x[i];  // vector from a2 to a1
+                v1[i] = a2.x[i] - a3.x[i];  // vector from a2 to a3
+            }
+            
+            // Calculate the inner product of the two vectors
+            double inner_product = 0.0;
+            for (int i = 0; i < 3; ++i) {
+                inner_product += v1[i] * v2[i];
+            }
+            
+            // Calculate the magnitude of the two vectors
+            double magnitude_v1 = 0.0, magnitude_v2 = 0.0;
+            for (int i = 0; i < 3; ++i) {
+                magnitude_v1 += v1[i] * v1[i];
+                magnitude_v2 += v2[i] * v2[i];
+            }
+            magnitude_v1 = sqrt(magnitude_v1);
+            magnitude_v2 = sqrt(magnitude_v2);
+            
+            // Calculate the cosine of the angle between the two vectors
+            double cosine = inner_product / (magnitude_v1 * magnitude_v2);
+            
+            // Calculate the angle in radians
+            double radians = acos(cosine);
+            
+            // Convert the angle from radians to degrees
+            theta = radians * 180.0 / M_PI;
+            
+            return theta;
+        }
     
         double energy(double theta) {
             double rad_theta = theta * M_PI / 180.0;
@@ -152,19 +188,20 @@ int main() {
     
     double total_eng = 0;
     
+    // TODO 用上課所教的 水分子沒有 Nonbond
     // Nonbond
-    NONBOND nbs[3]; // 創建一個大小為 3 的 NONBOND 物件陣列
-    nbs[0].cal_eng(a[0], a[1]); // 計算第一對原子之間的非鍵能
-    nbs[1].cal_eng(a[0], a[2]); // 計算第二對原子之間的非鍵能
-    nbs[2].cal_eng(a[1], a[2]); // 計算第三對原子之間的非鍵能
-    
-    for (int i = 0; i < 3; i++) {
-        cout << "NONMOND: " << i << endl;
-        cout << "vdw: " << nbs[i].vdw
-             << " kcal/mol, cou: " << nbs[i].cou << " kcal/mol\n"
-             << "eng: " << nbs[i].eng << " kcal/mol\n" << endl;
-        total_eng += nbs[i].eng;
-    }
+//    NONBOND nbs[3]; // 創建一個大小為 3 的 NONBOND 物件陣列
+//    nbs[0].cal_eng(a[0], a[1]); // 計算第一對原子之間的非鍵能
+//    nbs[1].cal_eng(a[0], a[2]); // 計算第二對原子之間的非鍵能
+//    nbs[2].cal_eng(a[1], a[2]); // 計算第三對原子之間的非鍵能
+//
+//    for (int i = 0; i < 3; i++) {
+//        cout << "NONMOND: " << i << endl;
+//        cout << "vdw: " << nbs[i].vdw
+//             << " kcal/mol, cou: " << nbs[i].cou << " kcal/mol\n"
+//             << "eng: " << nbs[i].eng << " kcal/mol\n" << endl;
+//        total_eng += nbs[i].eng;
+//    }
     
     // bond
     BOND bonds[2];
@@ -185,7 +222,10 @@ int main() {
     
     // angle
     ANGLE angle;
-    double theta = 111.251;  // degrees
+    double theta;  // degrees
+    theta = angle.angle(a[0], a[1], a[2]);
+    
+    
     angle.k0 = 120;  // kcal/mol
     angle.theta0 = 109.47;  // degrees
     angle.energy(theta);
