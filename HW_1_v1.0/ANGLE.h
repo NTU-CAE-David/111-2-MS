@@ -17,16 +17,18 @@ using namespace std;
 class ANGLE{
 public:
     ANGLE(){
-        k0=theta0=eng=theta=0;
+        k0=theta0=eng=theta=pe=f=0;
     }
     double k0;      // Force constant in kcal/mol
     double theta0;  // Equilibrium angle in degrees
     double eng;     // angle energy in kcal/mol
     double theta;   // Initi angle in degrees
+    double pe;      // potential_energy
+    double f;       // force
     double angle(const ATOM& a1, const ATOM& a2, const ATOM& a3);
     double energy(double theta);
-    double potential_energy(double theta) const;
-    double force(double theta) const;
+    double potential_energy(double theta);
+    double force(double theta);
     
 };
 
@@ -74,14 +76,16 @@ double ANGLE::energy(double theta) {
     return eng;
 }
 
-double ANGLE::potential_energy(double theta) const {
+double ANGLE::potential_energy(double theta){
     double delta_theta = theta - theta0;
-    return 0.5 * k0 * delta_theta * delta_theta;
+    pe = 0.5 * k0 * delta_theta * delta_theta;
+    return pe;
 }
 
-double ANGLE::force(double theta) const {
+double ANGLE::force(double theta){
     double delta_theta = theta - theta0;
-    return -k0 * delta_theta;
+    f = -k0 * delta_theta;
+    return f;
 }
 
 #endif /* ANGLE_h */
