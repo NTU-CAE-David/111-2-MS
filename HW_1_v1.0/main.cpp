@@ -69,7 +69,8 @@ int main() {
     a[1][2].Ro=0.9;
     a[1][2].Do=0.01;
     
-    double total_eng = 0;
+    double internal_eng[2] = {}; // Internal Energy
+    double total_eng = 0.0; // Total Energy
     
     // Nonbond
     NONBOND nbs[3][3]; // 創建一個大小為 3*3 的 NONBOND 物件陣列
@@ -89,6 +90,9 @@ int main() {
             cout << "vdw: " << nbs[i][j].vdw
                  << " kcal/mol, cou: " << nbs[i][j].cou << " kcal/mol\n"
                  << "eng: " << nbs[i][j].eng << " kcal/mol\n" << endl;
+            
+            // calculate Energy
+//            internal_eng[i] += nbs[i][j].eng;
             total_eng += nbs[i][j].eng;
         }
     }
@@ -118,6 +122,9 @@ int main() {
                 << " BOND: " << i << endl;
             cout << "bond length is " << bonds[j][i].len
                 <<" A, energy is "<< bonds[j][i].eng << " kcal/mol\n"<<endl;
+            
+            // calculate Energy
+            internal_eng[j] += bonds[j][i].eng;
             total_eng += bonds[j][i].eng;
         }
     }
@@ -148,11 +155,25 @@ int main() {
         cout << "Force: " << angle[i].f << " kcal/(mol.deg)\n";
         cout << "Equilibrium angle[" << i << "]: " << angle[i].theta0 << " degrees" << endl;
         cout << endl;
+        
+        // calculate Energy
+        internal_eng[i] += angle[i].eng;
         total_eng += angle[i].eng;
     }
     
     
+    cout << "=================== HW 問題回答 ===================\n" << endl;
+    
+    cout << "Q.2 (a): " << endl;
+    cout << "Internal Energy [0] = " << internal_eng[0] << " kcal/mol." <<endl;
+    cout << "Internal Energy [1] = " << internal_eng[1] << " kcal/mol." <<endl;
+    
+    cout << "Q.2 (b): " << endl;
     cout << "Total Energy = " << total_eng << " kcal/mol." <<endl;
+    
+    cout << "Q.2 (c): " << endl;
+    double binding_eng =  total_eng - internal_eng[0] - internal_eng[1];
+    cout << "Binding Energy = " << binding_eng << " kcal/mol." <<endl;
     
     return 0;
 

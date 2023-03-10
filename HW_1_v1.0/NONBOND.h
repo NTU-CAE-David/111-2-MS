@@ -46,8 +46,8 @@ double NONBOND::cal_eng(ATOM &a,ATOM &b){
     D0 = sqrt(a.Do * b.Do);
     R0 = (a.Ro + b.Ro)*0.5;
     vdw = D0*(pow(R0/r, 12) - 2.0*pow(R0/r, 6));
-    
-    return eng = vdw + cou;
+    eng = vdw + cou;
+    return eng;
 }
 
 #endif /* NONBOND_h */
