@@ -17,7 +17,7 @@ using namespace std;
 class ANGLE{
 public:
     ANGLE(){
-        k0=theta0=eng=0;
+        k0=theta0=eng=theta=0;
     }
     double k0;      // Force constant in kcal/mol
     double theta0;  // Equilibrium angle in degrees

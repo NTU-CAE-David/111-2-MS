@@ -118,13 +118,9 @@ int main() {
     // angle
     ANGLE angle[2];
     
-    // TODO 求出兩個分子各自的初始 theta 值
-    
     double theta[2];  // degrees
     theta[0] = angle[0].angle(a[0][0], a[0][1], a[0][2]);
     theta[1] = angle[1].angle(a[1][0], a[1][1], a[1][2]);
-    
-    cout << "theta: " << theta[0] << endl;
     
     angle[0].k0 = 120;  // kcal/mol
     angle[0].theta0 = 109.47;  // degrees
