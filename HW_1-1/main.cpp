@@ -70,19 +70,12 @@ int main() {
     bonds[1].Kb = 500; // kcal/mole
     bonds[1].len0 = 1;
     bonds[1].cal_eng(a[0], a[2]);
-
-    for (int i = 0; i < 2; i++) {
-        cout << "BOND: " << i << endl;
-        cout<<"bond length is "<<bonds[i].len
-            <<" A, energy is "<<bonds[i].eng<<" kcal/mol\n"<<endl;
-        total_eng += bonds[i].eng;
-    }
+    
     
     // angle
     ANGLE angle;
     double theta;  // degrees
     theta = angle.angle(a[0], a[1], a[2]);
-    
     
     angle.k0 = 120;  // kcal/mol
     angle.theta0 = 109.47;  // degrees
@@ -90,18 +83,31 @@ int main() {
     
     double pe = angle.potential_energy(theta);
     double f = angle.force(theta);
-
+    
+    
+    cout << "=================== HW 問題回答 ===================\n" << endl;
+    
+    cout << "Q.1 (a): " << endl;
+    for (int i = 0; i < 2; i++) {
+        cout << "BOND: " << i << endl;
+        cout<<"bond length is "<<bonds[i].len
+            <<" A, energy is "<<bonds[i].eng<<" kcal/mol" << endl;
+        total_eng += bonds[i].eng;
+    }
+    cout << endl;
+    
+    cout << "Q.1 (b): " << endl;
     cout <<  "Energy of HOH angle at " << theta
         << " degrees: " << angle.eng << " kcal/mol." << endl;
     cout << "Potential energy: " << pe << " kcal/mol\n";
     cout << "Force: " << f << " kcal/(mol.deg)\n";
     cout << "Equilibrium angle: " << angle.theta0 << " degrees" << endl;
+    cout << endl;
     
     
+    cout << "Q.1 (c): " << endl;
     total_eng += angle.eng;
     cout << "Total Energy = " << total_eng << " kcal/mol." <<endl;
-    
-
     
     return 0;
 
