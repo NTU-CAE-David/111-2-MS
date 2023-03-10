@@ -88,7 +88,7 @@ int main() {
     }
     
     // bond
-    BOND bonds[2][2];
+    BOND bonds[2][2]; // bonds["分子編號"]["分子內鍵結編號"]
     bonds[0][0].Kb = 500; // kcal/mole
     bonds[0][0].len0 = 1;
     bonds[0][0].cal_eng(a[0][0], a[0][1]);
@@ -120,7 +120,12 @@ int main() {
     
     // TODO 求出兩個分子各自的初始 theta 值
     
-    double theta[2] = {111.251, 111.251};  // degrees
+    double theta[2];  // degrees
+    theta[0] = angle[0].angle(a[0][0], a[0][1], a[0][2]);
+    theta[1] = angle[1].angle(a[1][0], a[1][1], a[1][2]);
+    
+    cout << "theta: " << theta[0] << endl;
+    
     angle[0].k0 = 120;  // kcal/mol
     angle[0].theta0 = 109.47;  // degrees
     angle[0].energy(theta[0]);
