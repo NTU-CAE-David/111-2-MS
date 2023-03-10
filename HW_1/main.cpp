@@ -63,8 +63,8 @@ class ANGLE {
             // Calculate two vectors
             double v1[3], v2[3];
             for (int i = 0; i < 3; ++i) {
-                v2[i] = a1.x[i] - a2.x[i];  // vector from a2 to a1
-                v1[i] = a2.x[i] - a3.x[i];  // vector from a2 to a3
+                v2[i] = a2.x[i] - a1.x[i];  // vector from a1 to a2
+                v1[i] = a3.x[i] - a1.x[i];  // vector from a1 to a3
             }
             
             // Calculate the inner product of the two vectors
