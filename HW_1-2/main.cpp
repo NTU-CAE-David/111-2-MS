@@ -84,12 +84,12 @@ int main() {
         for (int j = 0; j < 3; j++){
             nbs[i][j].cal_eng(a[0][i], a[1][j]); // 計算第一對原子之間的非鍵能
             
-            cout << "NONMOND: "
-                << "0" << i << "->"
-                << "1" << j << endl;
-            cout << "vdw: " << nbs[i][j].vdw
-                 << " kcal/mol, cou: " << nbs[i][j].cou << " kcal/mol\n"
-                 << "eng: " << nbs[i][j].eng << " kcal/mol\n" << endl;
+//            cout << "NONMOND: "
+//                << "0" << i << "->"
+//                << "1" << j << endl;
+//            cout << "vdw: " << nbs[i][j].vdw
+//                 << " kcal/mol, cou: " << nbs[i][j].cou << " kcal/mol\n"
+//                 << "eng: " << nbs[i][j].eng << " kcal/mol\n" << endl;
             
             // calculate Energy
 //            internal_eng[i] += nbs[i][j].eng;
@@ -118,11 +118,11 @@ int main() {
 
     for (int j = 0; j < 2; j++){
         for (int i = 0; i < 2; i++) {
-            cout << "分子編號: " << j
-                << " BOND: " << i << endl;
-            cout << "bond length is " << bonds[j][i].len
-                <<" A, energy is "<< bonds[j][i].eng << " kcal/mol\n"<<endl;
-            
+//            cout << "分子編號: " << j
+//                << " BOND: " << i << endl;
+//            cout << "bond length is " << bonds[j][i].len
+//                <<" A, energy is "<< bonds[j][i].eng << " kcal/mol\n"<<endl;
+//
             // calculate Energy
             internal_eng[j] += bonds[j][i].eng;
             total_eng += bonds[j][i].eng;
@@ -149,12 +149,12 @@ int main() {
         angle[i].potential_energy(theta[i]);
         angle[i].force(theta[i]);
         
-        cout <<  "Energy of HOH angle[" << i << "] at " << theta[i]
-        << " degrees: " << angle[i].eng << " kcal/mol." << endl;
-        cout << "Potential energy: " << angle[i].pe << " kcal/mol\n";
-        cout << "Force: " << angle[i].f << " kcal/(mol.deg)\n";
-        cout << "Equilibrium angle[" << i << "]: " << angle[i].theta0 << " degrees" << endl;
-        cout << endl;
+//        cout <<  "Energy of HOH angle[" << i << "] at " << theta[i]
+//        << " degrees: " << angle[i].eng << " kcal/mol." << endl;
+//        cout << "Potential energy: " << angle[i].pe << " kcal/mol\n";
+//        cout << "Force: " << angle[i].f << " kcal/(mol.deg)\n";
+//        cout << "Equilibrium angle[" << i << "]: " << angle[i].theta0 << " degrees" << endl;
+//        cout << endl;
         
         // calculate Energy
         internal_eng[i] += angle[i].eng;
@@ -167,9 +167,11 @@ int main() {
     cout << "Q.2 (a): " << endl;
     cout << "Internal Energy [0] = " << internal_eng[0] << " kcal/mol." <<endl;
     cout << "Internal Energy [1] = " << internal_eng[1] << " kcal/mol." <<endl;
+    cout << endl;
     
     cout << "Q.2 (b): " << endl;
     cout << "Total Energy = " << total_eng << " kcal/mol." <<endl;
+    cout << endl;
     
     cout << "Q.2 (c): " << endl;
     double binding_eng =  total_eng - internal_eng[0] - internal_eng[1];
