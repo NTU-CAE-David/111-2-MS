@@ -44,7 +44,7 @@ int main() {
     a[2].Ro=0.9;
     a[2].Do=0.01;
     
-    double total_eng = 0;
+    double total_eng = 0.0, bonds_eng = 0;
     
     // TODO 用上課所教的 水分子沒有 Nonbond
     // Nonbond
@@ -93,6 +93,7 @@ int main() {
         cout<<"bond length is "<<bonds[i].len
             <<" A, energy is "<<bonds[i].eng<<" kcal/mol" << endl;
         total_eng += bonds[i].eng;
+        bonds_eng = total_eng;
     }
     cout << endl;
     
@@ -107,7 +108,13 @@ int main() {
     
     cout << "Q.1 (c): " << endl;
     total_eng += angle.eng;
-    cout << "Total Energy = " << total_eng << " kcal/mol." <<endl;
+    cout << "Bond Energy = " << bonds_eng << " kcal/mol." << endl;
+    cout << "Cosine Harmonic Angle Energy = " << angle.eng << " kcal/mol." << endl;
+    cout << "Torsion = " << 0 << " kcal/mol." << endl;
+    cout << "Inversion = " << 0 << " kcal/mol." << endl;
+    cout << "Van der Waals = " << 0 << " kcal/mol." << endl;
+    cout << "Coulomb = " << 0 << " kcal/mol." << endl;
+    cout << "Total Energy = " << total_eng << " kcal/mol." << endl;
     
     return 0;
 
