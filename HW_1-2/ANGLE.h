@@ -71,7 +71,7 @@ double ANGLE::angle(const ATOM& a1, const ATOM& a2, const ATOM& a3) {
 double ANGLE::energy(double theta) {
     double rad_theta = theta * M_PI / 180.0;
     double rad_theta0 = theta0 * M_PI / 180.0;
-    double cos_sin_delta = cos(rad_theta - rad_theta0) / sin(theta0);
+    double cos_sin_delta = cos(rad_theta) - cos(rad_theta0) / sin(theta0);
     eng = 0.5 * k0 * cos_sin_delta * cos_sin_delta;
     return eng;
 }
